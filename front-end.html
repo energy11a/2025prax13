@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>Raamatute haldamise veebirakendus</title>
+    <script type="text/javascript" src="apiparingud.js" defer></script>
+</head>
+
+<body>
+
+<h1>Raamatute haldamine</h1>
+
+<!-- Raamatu allalaadimise vorm -->
+<p><strong>Raamatu alla laadimine Gutenbergist:</strong></p>
+<form id="frontform">
+    <label>
+        <strong>Raamatu ID:</strong>
+        <input type="text" name="raamatu_id" required>
+    </label>
+    <input type="submit" value="Lae alla raamat">
+</form>
+
+<br />
+
+<!-- Raamatust sõne otsimise vorm -->
+<p><strong>Otsi sõne kõikidest raamatutest:</strong></p>
+<form id="otsinguform">
+    <label>
+        <strong>Sõne:</strong>
+        <input type="text" name="sone" required>
+    </label>
+    <input type="submit" value="Otsi raamatutest">
+</form>
+
+<br />
+
+<h2>Raamatud:</h2>
+<div id="raamatud_result"></div>
+
+<br />
+
+<h2>Otsingu tulemus:</h2>
+<div id="tulemus"></div>
+
+</body>
+</html>
