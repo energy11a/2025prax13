@@ -20,9 +20,9 @@ async function handleFormSubmit(event) {
     let url = "";
 
     if (form.id === "frontform") {
-        url = "http://localhost:5000/raamatud/";
+        url = "https://raamatud-haldus-cveagkdzajerdfcd.northeurope-01.azurewebsites.net/raamatud/";
     } else if (form.id === "otsinguform") {
-        url = "http://localhost:5001/raamatu_otsing/";
+        url = "https://otsingapi-dxgte8cndug3ehgm.northeurope-01.azurewebsites.net/raamatu_otsing/";
     }
 
     try {
@@ -98,12 +98,12 @@ async function listiraamatud() {
     resultElement.innerHTML = "";
 
     try {
-        const responseData = await getDataAsJson("http://localhost:5000/raamatud/");
+        const responseData = await getDataAsJson("https://raamatud-haldus-cveagkdzajerdfcd.northeurope-01.azurewebsites.net/raamatud/");
 
         for (const raamat of responseData.raamatud) {
             const raamatDiv = document.createElement("div");
             raamatDiv.innerHTML = `
-                <a href="http://localhost:5000/raamatud/${raamat}" download="${raamat}.txt">${raamat}.txt</a>
+                <a href="https://raamatud-haldus-cveagkdzajerdfcd.northeurope-01.azurewebsites.net/raamatud/${raamat}" download="${raamat}.txt">${raamat}.txt</a>
                 <form class="raamat-otsing-form" data-raamat-id="${raamat}">
                     <input type="text" name="sone" placeholder="Sisesta sõne..." required>
                     <input type="submit" value="Otsi sellest raamatust">
@@ -159,7 +159,7 @@ async function handleSingleRaamatOtsing(event) {
 
     try {
         const responseData = await postJsonData({
-            url: `http://localhost:5001/raamatu_otsing/${raamatId}`,
+            url: `https://otsingapi-dxgte8cndug3ehgm.northeurope-01.azurewebsites.net/raamatu_otsing/${raamatId}`,
             data: requestData
         });
 
@@ -192,7 +192,7 @@ async function handleRaamatKustutamine(event) {
     }
 
     try {
-        await deleteData(`http://localhost:5000/raamatud/${raamatId}`);
+        await deleteData(`https://raamatud-haldus-cveagkdzajerdfcd.northeurope-01.azurewebsites.net/raamatud/${raamatId}`);
         listiraamatud(); // peale kustutamist värskenda nimekiri
     } catch (error) {
         console.error(error);
